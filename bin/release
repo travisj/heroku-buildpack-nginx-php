@@ -6,12 +6,11 @@ BUILD_DIR=$1
 
 cat <<EOF
 ---
-EOF
-
-if [ ! -f $BUILD_DIR/Procfile ]; then
-	echo "PROCFILE NOT FOUND"
-cat <<EOF
 default_process_types:
 	web: sh boot.sh
 EOF
-fi
+
+#if [ ! -f $BUILD_DIR/Procfile ]; then
+#cat <<EOF
+#EOF
+#fi
