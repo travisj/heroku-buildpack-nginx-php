@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -f $1/wp-config.php ]; then
+if [ -f $1/public/index.php ]; then
 	echo "PHP"
 	exit 0
 else 
