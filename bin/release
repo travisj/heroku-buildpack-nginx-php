@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
+#PATH: $BUILD_DIR/app/vendor/nginx/sbin:$BUILD_DIR/app/vendor/php/bin:$BUILD_DIR/app/vendor/php/sbin:/usr/local/bin:/usr/bin:/bin
 
 BUILD_DIR=$1
 
 cat <<EOF
 ---
 config_vars:
-	PATH: $BUILD_DIR/app/vendor/nginx/sbin:$BUILD_DIR/app/vendor/php/bin:$BUILD_DIR/app/vendor/php/sbin:/usr/local/bin:/usr/bin:/bin
+	PATH: /bin:$BUILD_DIR
 EOF
 
 if [ ! -f $BUILD_DIR/Procfile ]; then
