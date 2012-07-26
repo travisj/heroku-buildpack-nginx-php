@@ -6,8 +6,6 @@ BUILD_DIR=$1
 
 cat <<EOF
 ---
-config_vars:
-	PATH: /bin:$BUILD_DIR
 EOF
 
 if [ ! -f $BUILD_DIR/Procfile ]; then
