@@ -61,7 +61,7 @@ touch /app/vendor/nginx/logs/access.log /app/vendor/nginx/logs/error.log
 mkdir -p client_body_temp fastcgi_temp proxy_temp scgi_temp uwsgi_temp
 (tail -f -n 0 /app/vendor/nginx/logs/*.log &)
 
-/app/vendor/php/sbin/php-fpm
+/app/vendor/php/sbin/php-fpm -y /app/vendor/php/etc/php-fpm.conf -c /app/vendor/php/php.ini
 /app/vendor/nginx/sbin/nginx -c /app/vendor/nginx/conf/nginx.conf
 EOF
 chmod +x boot.sh
