@@ -1,0 +1,69 @@
+#!/bin/bash
+# Usage: bin/compile <build-dir> <cache-dir>
+
+set -e
+set -o pipefail
+
+# START CONFIG
+NGINX_VERSION=1.2.0
+PHP_VERSION=5.4.4
+# END CONFIG
+
+#
+NGINX_URL="http://php54-with-fpm.herokuapp.com/output/8125be9d-2d6e-4dc3-8ad4-fa3337741e95"
+PHP_URL="http://php54-with-fpm.herokuapp.com/output/c8f38d36-2de8-4a5e-9a34-4a685900bdb1"
+#
+
+function indent() {
+	  c='s/^/       /'
+		  case $(uname) in
+			    Darwin) sed -l "$c";;
+					    *)      sed -u "$c";;
+							  esac
+								}
+
+								BUILD_DIR=$1
+								CACHE_DIR=$2
+								mkdir -p $BUILD_DIR $CACHE_DIR
+
+# Nginx
+echo "-----> Installing Nginx"
+cd ${BUILD_DIR}
+if [ ! -d ./vendor/nginx ]; then
+	echo "-----> Bundling Nginx v${NGINX_VERSION}"
+	mkdir -p ./vendor/nginx && cd ./vendor/nginx
+	curl --silent --max-time 60 --location $NGINX_URL | tar xz
+fi
+
+# PHP
+echo "-----> Installing PHP"
+cd ${BUILD_DIR}
+if [ ! -d ./vendor/php ]; then
+	echo "-----> Bundling PHP v${PHP_VERSION}"
+	mkdir -p ./vendor/php && cd ./vendor/php
+	curl --silent --max-time 60 --location $PHP_URL | tar xz
+fi
+
+# setup web script. php-cgi relies on PHP_FCGI_CHILDREN=5 PHP_FCGI_MAX_REQUESTS=1000, set in 'bin/release'
+echo "-----> Installing boot script"
+cd $BUILD_DIR
+cat >>boot.sh <<EOF
+#!/usr/bin/env bash
+
+echo "Booting nginx"
+
+cp /app/config/php-fpm.conf /app/vendor/php/etc/php-fpm.conf
+cp /app/vendor/php/php/fpm/status.html /app/status.html
+cp /app/config/php.ini /app/vendor/php/php.ini
+erb /app/config/nginx.conf.erb > /app/vendor/nginx/conf/nginx.conf
+
+touch /app/vendor/nginx/logs/access.log /app/vendor/nginx/logs/error.log
+mkdir -p client_body_temp fastcgi_temp proxy_temp scgi_temp uwsgi_temp
+(tail -f -n 0 /app/vendor/nginx/logs/*.log &)
+
+php-fpm
+nginx
+EOF
+chmod +x boot.sh
+
+echo "-----> Done with compile"
