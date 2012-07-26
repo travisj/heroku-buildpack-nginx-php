@@ -5,7 +5,7 @@ set -e
 set -o pipefail
 
 # START CONFIG
-NGINX_VERSION=1.2.0
+NGINX_VERSION=1.3.3
 PHP_VERSION=5.4.4
 # END CONFIG
 
@@ -17,14 +17,14 @@ PHP_URL="http://php54-with-fpm.herokuapp.com/output/c8f38d36-2de8-4a5e-9a34-4a68
 function indent() {
 	  c='s/^/       /'
 		  case $(uname) in
-			    Darwin) sed -l "$c";;
-					    *)      sed -u "$c";;
-							  esac
-								}
+				Darwin) sed -l "$c";;
+				*)      sed -u "$c";;
+			esac
+}
 
-								BUILD_DIR=$1
-								CACHE_DIR=$2
-								mkdir -p $BUILD_DIR $CACHE_DIR
+BUILD_DIR=$1
+CACHE_DIR=$2
+mkdir -p $BUILD_DIR $CACHE_DIR
 
 # Nginx
 echo "-----> Installing Nginx"

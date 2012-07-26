@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
-echo $1
-exit 0
-
-#if [ -f $1/public/index.php ]; then
-#	echo "PHP"
-#	exit 0
-#else 
-#	echo "No"
-#	exit 1
-#fi
+if [ -f $1/public/index.php ]; then
+	echo "PHP"
+	exit 0
+else 
+	echo "No"
+	exit 1
+fi
