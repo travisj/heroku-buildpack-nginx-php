@@ -62,7 +62,7 @@ mkdir -p client_body_temp fastcgi_temp proxy_temp scgi_temp uwsgi_temp
 (tail -f -n 0 /app/vendor/nginx/logs/*.log &)
 
 /app/vendor/php/sbin/php-fpm
-/app/vendor/nginx/sbin/nginx
+/app/vendor/nginx/sbin/nginx -c /app/vendor/nginx/conf/nginx.conf
 EOF
 chmod +x boot.sh
 
