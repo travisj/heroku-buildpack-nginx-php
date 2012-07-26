@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 # bin/release <build-dir>
+#PATH: $BUILD_DIR/app/vendor/nginx/sbin:$BUILD_DIR/app/vendor/php/bin:$BUILD_DIR/app/vendor/php/sbin:/usr/local/bin:/usr/bin:/bin
+
+BUILD_DIR=$1
 
 cat <<EOF
 ---
 default_process_types:
-  web: sh boot.sh
+	web: sh boot.sh
 EOF
+
+#if [ ! -f $BUILD_DIR/Procfile ]; then
+#cat <<EOF
+#EOF
+#fi
