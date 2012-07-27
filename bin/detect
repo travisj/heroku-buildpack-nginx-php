@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -f $1/public/index.php ]; then
-	echo "PHP"
+if [ -f $1/_config/php.ini && -f $1/_config/php-fpm.ini && -f $1/_config/nginx.conf.erb ]; then
+	echo "Nginx/PHP"
 	exit 0
 else 
 	echo "No"
