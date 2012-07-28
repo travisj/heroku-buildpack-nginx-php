@@ -9,8 +9,8 @@ NGINX_VERSION=1.3.3
 PHP_VERSION=5.4.5
 # END CONFIG
 
-NGINX_URL="http://php54-with-fpm.herokuapp.com/output/8125be9d-2d6e-4dc3-8ad4-fa3337741e95"
-PHP_URL="http://php54-with-fpm.herokuapp.com/output/c8f38d36-2de8-4a5e-9a34-4a685900bdb1"
+NGINX_URL="http://php54-with-fpm.herokuapp.com/output/33c85c3e-36fd-4d3c-a0e0-4fbcecda005b"
+PHP_URL="http://php54-with-fpm.herokuapp.com/output/fcb93b5c-89ce-4cd3-b8a3-aa34305d3cab"
 
 function indent() {
 	  c='s/^/       /'
