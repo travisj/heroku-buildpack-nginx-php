@@ -8,8 +8,8 @@ Usage
 -----
 
 Creating your own Nginx + PHP server:
-		$ ls _config/
-		nginx.conf.erb   php-fpm.conf   php.ini
+	$ ls _config/  
+	nginx.conf.erb   php-fpm.conf   php.ini
     $ heroku create --buildpack http://github.com/travisj/heroku-buildpack-nginx-php
 		$ git push heroku master
 		...
