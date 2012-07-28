@@ -7,7 +7,7 @@ running your own Nginx HTTP server with PHP on Heroku.
 Versions
 --------
 
-Nginx: 1.3.3
+Nginx: 1.3.3  
 PHP: 5.4.5
 
 Usage
