@@ -50,3 +50,26 @@ Contributing
 
 Please send me pull requests for additional example configs and I would be happy
 to include them in this project.
+
+Builds
+------
+
+In the `builds` directory you can find the scripts used to create the executables. 
+If you need to build either with additional support, fork this project, update
+the build scripts and run:
+
+    $ ./builds/php 5.4.5
+    ...
+    (available at http://php54-with-fpm.herokuapp.com/output/fcb93b5c-89ce-4cd3-b8a3-aa34305d3cab)
+    ...
+
+Look for the url where this new build is available and update `bin/compile` with 
+your build. 
+
+If this is your first time creating a build for Heroku, you will need to install
+[Vulcan](https://github.com/heroku/vulcan/) and run:
+
+    $ vulcan create APP_NAME
+
+Please send a pull request if you are adding functionality that you think anyone
+would benefit from.
