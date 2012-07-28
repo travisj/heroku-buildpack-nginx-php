@@ -8,23 +8,23 @@ Usage
 -----
 
 Creating your own Nginx + PHP server:  
-	$ ls _config/  
-	nginx.conf.erb   php-fpm.conf   php.ini
+    $ ls _config/  
+    nginx.conf.erb   php-fpm.conf   php.ini
     $ heroku create --buildpack http://github.com/travisj/heroku-buildpack-nginx-php
-		$ git push heroku master
-		...
-		-----> Heroku receiving push
-		-----> Fetching custom buildpack... done
-		-----> Nginx/PHP app detected
-		-----> Installing Nginx
-		-----> Bundling Nginx v1.3.3
-		-----> Installing PHP
-		-----> Bundling PHP v5.4.5
-		-----> Installing boot script
-		-----> Done with compile
-		-----> Discovering process types
-		       Procfile declares types     -> (none)
-					 Default types for Nginx/PHP -> web
+    $ git push heroku master
+    ...
+    -----> Heroku receiving push
+    -----> Fetching custom buildpack... done
+    -----> Nginx/PHP app detected
+    -----> Installing Nginx
+    -----> Bundling Nginx v1.3.3
+    -----> Installing PHP
+    -----> Bundling PHP v5.4.5
+    -----> Installing boot script
+    -----> Done with compile
+    -----> Discovering process types
+        Procfile declares types     -> (none)
+        Default types for Nginx/PHP -> web
 
 Config Files
 ------------
