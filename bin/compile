@@ -30,10 +30,7 @@ cd ${BUILD_DIR}
 if [ ! -d ./vendor/nginx ]; then
 	echo "-----> Bundling Nginx v${NGINX_VERSION}"
 	mkdir -p ./vendor/nginx && cd ./vendor/nginx
-	if [ ! -f $CACHE_DIR/nginx.$NGINX_VERSION.tar.gz ]; then
-		curl --silent --max-time 60 --location $NGINX_URL -o $CACHE_DIR/nginx.$NGINX_VERSION.tar.gz
-	fi
-	tar -zxvf $CACHE_DIR/nginx.$NGINX_VERSION.tar.gz
+	curl --silent --max-time 60 --location $NGINX_URL | tar xz
 fi
 
 # PHP
