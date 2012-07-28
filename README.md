@@ -24,8 +24,8 @@ Creating your own Nginx + PHP server:
     -----> Installing boot script
     -----> Done with compile
     -----> Discovering process types
-        Procfile declares types     -> (none)
-        Default types for Nginx/PHP -> web
+           Procfile declares types     -> (none)
+           Default types for Nginx/PHP -> web
 
 Config Files
 ------------
