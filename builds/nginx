@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -e
+
+
+if [ ! $1 ]; then
+	echo "must set version as parameter"
+	exit 1
+fi
+NGINX_VERSION=$1
+
+basedir="$( cd -P "$( dirname "$0" )" && pwd )"
+
+# make a temp directory
+tempdir="$( mktemp -t nginx_XXXX )"
+echo $tempdir
+rm -rf $tempdir
+mkdir -p $tempdir
+pushd $tempdir
+
+# download and extract nginx
+curl http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz -o nginx.tgz
+tar xzvf nginx.tgz
+
+# download and extract pcre into contrib directory
+pushd nginx-$NGINX_VERSION/contrib
+curl ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz -o pcre.tgz
+tar zvxf pcre.tgz
+popd
+
+# download the spdy patch
+#pushd nginx-$NGINX_VERSION
+#wget http://nginx.org/patches/spdy/patch.spdy.txt
+#patch -p0 < patch.spdy.txt
+#popd
+
+# build and package nginx for heroku
+vulcan build -v -s nginx-$NGINX_VERSION -o $tempdir/nginx-$NGINX_VERSION-heroku.tar.gz -p /app/vendor/nginx -c './configure --prefix=/app/vendor/nginx --with-pcre=contrib/pcre-8.21 --with-http_ssl_module --with-http_gzip_static_module && make install' 
+
