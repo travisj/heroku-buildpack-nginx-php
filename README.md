@@ -7,8 +7,9 @@ running your own Nginx HTTP server with PHP on Heroku.
 Usage
 -----
 
-Creating your own Nginx + PHP server:  
-    $ ls _config/  
+Creating your own Nginx + PHP server:
+
+    $ ls _config/
     nginx.conf.erb   php-fpm.conf   php.ini
     $ heroku create --buildpack http://github.com/travisj/heroku-buildpack-nginx-php
     $ git push heroku master
