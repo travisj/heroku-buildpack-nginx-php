@@ -60,7 +60,7 @@ the build scripts and run:
 
     $ ./builds/php 5.4.5
     ...
-    (available at http://php54-with-fpm.herokuapp.com/output/fcb93b5c-89ce-4cd3-b8a3-aa34305d3cab)
+    (available at http://travisj.herokuapp.com/output/fcb93b5c-89ce-4cd3-b8a3-aa34305d3cab)
     ...
 
 Look for the url where this new build is available and update `bin/compile` with 
